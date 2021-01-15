@@ -47,9 +47,7 @@ function getLabelsToAdd(config: Config, branchName: string): string[] {
   return Object.entries(config).reduce(
     (labels, [label, patterns]) => {
       if (
-        Array.isArray(patterns)
-          ? patterns.some(pattern => matcher.isMatch(branchName, pattern))
-          : matcher.isMatch(branchName, patterns)
+        matcher.isMatch(branchName, patterns)
       ) {
         labels.push(label)
       }
